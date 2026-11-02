@@ -1,0 +1,13 @@
+body { font: 16px/1.5 system-ui, sans-serif; margin: 0; background: #f6f7f9; color: #1c2430; }
+main { max-width: 640px; margin: 2rem auto; padding: 0 1rem; }
+section { background: #fff; border: 1px solid #d9dee5; border-radius: 6px; padding: 1rem 1.25rem; margin-bottom: 1rem; }
+h1 { font-size: 1.4rem; } h2 { font-size: 1rem; margin: 0 0 .5rem; }
+form { display: flex; gap: .5rem; flex-wrap: wrap; }
+input { flex: 1 1 160px; padding: .5rem; border: 1px solid #b8c0cc; border-radius: 4px; font: inherit; }
+button { padding: .5rem 1rem; border: 0; border-radius: 4px; background: #1f4e8c; color: #fff; font: inherit; cursor: pointer; }
+button:disabled { opacity: .5; cursor: not-allowed; }
+button:focus-visible, input:focus-visible { outline: 3px solid #f2b705; outline-offset: 2px; }
+.quota b { font-size: 1.6rem; }
+.msg { margin: .5rem 0; } .error { color: #a4161a; } .ok { color: #1b6b2f; }
+.timer { font-variant-numeric: tabular-nums; font-size: 1.3rem; }
+.malicious { color: #a4161a; } .suspicious { color: #b36b00; } .clean { color: #1b6b2f; }

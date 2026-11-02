@@ -1,0 +1,26 @@
+services:
+  db:
+    image: postgres:16
+    environment: { POSTGRES_USER: postgres, POSTGRES_PASSWORD: postgres, POSTGRES_DB: enrich }
+    healthcheck: { test: ["CMD-SHELL", "pg_isready -U postgres -d enrich"], interval: 2s, retries: 20 }
+  redis:
+    image: redis:7
+    healthcheck: { test: ["CMD", "redis-cli", "ping"], interval: 2s, retries: 20 }
+  backend:
+    build: ./backend
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@db:5432/enrich
+      REDIS_URL: redis://redis:6379/0
+    ports: ["8000:8000"]
+    depends_on: { db: { condition: service_healthy }, redis: { condition: service_healthy } }
+  frontend:
+    build: ./frontend
+    environment: { API_URL: "http://backend:8000" }
+    ports: ["5173:5173"]
+    depends_on: [backend]
+  loadtest:
+    build: ./backend
+    profiles: ["test"]
+    environment: { API_URL: "http://backend:8000/api" }
+    command: ["uv", "run", "--no-sync", "python", "tests/load_test.py"]
+    depends_on: [backend]
