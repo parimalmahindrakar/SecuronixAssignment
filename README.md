@@ -4,7 +4,7 @@ FastAPI + Postgres + Redis backend, React (Vite) frontend. Shares a 10-lookups-a
 
 ## Run (everything in Docker)
 ```bash
-docker compose up --build            # postgres, redis, backend (:8000), frontend (:5173)
+docker compose up --build      
 ```
 Open http://localhost:5173 (API docs at http://localhost:8000/docs).
 
