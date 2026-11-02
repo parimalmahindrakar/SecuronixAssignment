@@ -1,4 +1,4 @@
-# Enrichment quota coordinator
+# Enrichment lookup coordinator
 
 FastAPI + Postgres + Redis backend, React (Vite) frontend. Shares a 10-lookups-a-day quota safely.
 
